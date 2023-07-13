@@ -18,7 +18,8 @@ public class Agenda_Telefonica {
             System.out.println("    1. Guardar Contacto");
             System.out.println("    2. Ver Todos Los Contactos");
             System.out.println("    3. Buscar Un Contacto");
-            System.out.println("    4. Salir");
+            System.out.println("    4. Actulizar Contacto");
+            System.out.println("    5. Salir");
             System.out.println("Ingrese el Numero de Opcion");
             System.out.println("----------------------------------");
 
@@ -41,15 +42,22 @@ public class Agenda_Telefonica {
                     System.out.println(buscarContacto(Telefono));
 
                     break;
-
                 case 4:
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("------------Buscar_Numero----------------");
+                    System.out.println("_________Ingrese El Nombre__________");
+                    String Nombre = sc.nextLine();
+                    System.out.println(actulizarContacto(Nombre));
+                    break;
+
+                case 5:
                     System.out.println("");
                     System.out.println("_______Finalizado______");
                     System.out.println("");
                     break;
 
             }
-        } while (op != 4);
+        } while (op != 5);
 
     }
 
@@ -99,6 +107,33 @@ public class Agenda_Telefonica {
 
         } else {
             return "*Contacto No Encontrado*";
+
+        }
+    }
+    
+    static public String actulizarContacto(String nombre) {
+        Scanner sc = new Scanner(System.in);
+
+        int posicion = -1;
+        for (int i = 0; i < 10; i++) {
+            if (nuevoContactos[i] != null) {
+                if (nuevoContactos[i].verNombre().equals(nombre)) {
+                    System.out.println("Ingrese Nuevo Numero Telefono");
+                    String Telefono = sc.nextLine();
+                    nuevoContactos[i].setTelefono(Telefono);
+                    System.out.println("Ingrese Nuevo Domicilio");
+                    String  Domicilio = sc.nextLine();
+                    nuevoContactos[i].setDomicilio(Domicilio);
+                    posicion = i;
+                    break;
+                }
+
+            }
+        }
+        if (posicion != -1) {
+            return "Materia: " + nuevoContactos[posicion];
+        } else {
+            return "Profesor No Encontrado";
 
         }
     }
