@@ -8,62 +8,72 @@ public class Agenda_Telefonica {
     static Contacto nuevoContactos[] = new Contacto[15];
 
     public static void main(String[] args) {
-        //
+        //Agenda Telefonica con arreglos unidimencionales
         Scanner entrada = new Scanner(System.in);
         int op = 0;
         System.out.println("____________AGENDA TELEFONICA____________");
         System.out.println("__________Biendonido_______");
+        try {
+            do {
+                //Menu
+                System.out.println("");
+                System.out.println("    1. Guardar Contacto");
+                System.out.println("    2. Ver Todos Los Contactos");
+                System.out.println("    3. Buscar Un Contacto");
+                System.out.println("    4. Actulizar Contacto");
+                System.out.println("    5. Salir");
+                System.out.println("Ingrese el Numero de Opcion");
+                System.out.println("----------------------------------");
 
-        do {
-            System.out.println("    1. Guardar Contacto");
-            System.out.println("    2. Ver Todos Los Contactos");
-            System.out.println("    3. Buscar Un Contacto");
-            System.out.println("    4. Actulizar Contacto");
-            System.out.println("    5. Salir");
-            System.out.println("Ingrese el Numero de Opcion");
-            System.out.println("----------------------------------");
+                op = entrada.nextInt();
+                System.out.println("");
+                switch (op) {
+                    case 1:
+                        crearContacto();
+                        break;
 
-            op = entrada.nextInt();
-            System.out.println("");
-            switch (op) {
-                case 1:
-                    crearContacto();
-                    break;
+                    case 2:
+                        System.out.println("------------LOS_DATOS_SON----------------");
+                        System.out.println("");
+                        verTodo();
+                        break;
 
-                case 2:
-                    System.out.println("------------LOS_DATOS_SON----------------");
-                    System.out.println("");
-                    verTodo();
-                    break;
+                    case 3:
+                        Scanner salir = new Scanner(System.in);
+                        System.out.println("------------BUSCAR_NUMERO----------------");
+                        System.out.println("");
+                        System.out.println("_________Ingrese El Numero__________");
+                        String Telefono = salir.nextLine();
+                        System.out.println(buscarContacto(Telefono));
 
-                case 3:
-                    Scanner salir = new Scanner(System.in);
-                    System.out.println("------------BUSCAR_NUMERO----------------");
-                    System.out.println("");
-                    System.out.println("_________Ingrese El Numero__________");
-                    String Telefono = salir.nextLine();
-                    System.out.println(buscarContacto(Telefono));
+                        break;
+                    case 4:
+                        Scanner sc = new Scanner(System.in);
+                        System.out.println("------------ACTULIZAR_CONTACTO----------------");
+                        System.out.println("");
+                        System.out.println("_________Ingrese El Nombre__________");
+                        String Nombre = sc.nextLine();
+                        System.out.println(actulizarContacto(Nombre));
+                        break;
 
-                    break;
-                case 4:
-                    Scanner sc = new Scanner(System.in);
-                    System.out.println("------------ACTULIZAR_CONTACTO----------------");
-                    System.out.println("");
-                    System.out.println("_________Ingrese El Nombre__________");
-                    String Nombre = sc.nextLine();
-                    System.out.println(actulizarContacto(Nombre));
-                    break;
+                    case 5:
+                        System.out.println("");
+                        System.out.println("_______Finalizado______");
+                        System.out.println("");
+                        break;
 
-                case 5:
-                    System.out.println("");
-                    System.out.println("_______Finalizado______");
-                    System.out.println("");
-                    break;
+                    default:
+                        System.out.println("!!!-Solo Numeros Entre 1 y 5-!!!");
 
-            }
-        } while (op != 5);
+                }
+
+            } while (op != 5);
+        } catch (Exception e) {
+            System.out.println("-Debe Insertar Un Numero-!!!!");
+        }
 
     }
+    //Funciones
 
     static public void crearContacto() {
         if (contador >= 15) {
@@ -92,7 +102,7 @@ public class Agenda_Telefonica {
     }
 
     static public void verTodo() {
-            System.out.println("#############################################");
+        System.out.println("#############################################");
         for (int i = 0; i < contador; i++) {
             System.out.println("Telefono: " + nuevoContactos[i].verTelefono());
             System.out.println("Nombre: " + nuevoContactos[i].verNombre());
@@ -114,26 +124,27 @@ public class Agenda_Telefonica {
         }
 
         if (posicion != -1) {
-            return  "Nombre: " + nuevoContactos[posicion].verNombre() + "  Domicilio: " + nuevoContactos[posicion].verDomicilio();
-             
+            return "Nombre: " + nuevoContactos[posicion].verNombre() + "  Domicilio: " + nuevoContactos[posicion].verDomicilio();
+
         } else {
             return "*Contacto No Encontrado*";
 
         }
     }
-    
+
     static public String actulizarContacto(String nombre) {
+
         Scanner sc = new Scanner(System.in);
 
         int posicion = -1;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             if (nuevoContactos[i] != null) {
                 if (nuevoContactos[i].verNombre().equals(nombre)) {
                     System.out.println("Ingrese Nuevo Numero Telefono");
                     String Telefono = sc.nextLine();
                     nuevoContactos[i].setTelefono(Telefono);
                     System.out.println("Ingrese Nuevo Domicilio");
-                    String  Domicilio = sc.nextLine();
+                    String Domicilio = sc.nextLine();
                     nuevoContactos[i].setDomicilio(Domicilio);
                     posicion = i;
                     break;
@@ -142,11 +153,13 @@ public class Agenda_Telefonica {
             }
         }
         if (posicion != -1) {
-            return "Materia: " + nuevoContactos[posicion];
+            return "____Se_A__Actulizado_El_Contacto___";
+
         } else {
-            return "Contacto No Encontrado";
+            return "Contacto_No_Encontrado";
 
         }
+
     }
 
 }
