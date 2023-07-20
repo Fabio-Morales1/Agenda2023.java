@@ -101,7 +101,7 @@ public class Agenda_Telefonica {
             contador++;
         }
     }
-
+    //Metodo para ver los 3 parametros
     static public void verTodo() {
         System.out.println("#############################################");
         for (int i = 0; i < contador; i++) {
