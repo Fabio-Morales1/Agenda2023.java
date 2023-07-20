@@ -132,7 +132,7 @@ public class Agenda_Telefonica {
 
         }
     }
-
+      //Base de datos para actulizarlo con los anteriores
     static public String actulizarContacto(String nombre) {
 
         Scanner sc = new Scanner(System.in);
