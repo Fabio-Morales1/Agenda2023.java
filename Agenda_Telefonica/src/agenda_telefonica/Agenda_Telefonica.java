@@ -75,7 +75,7 @@ public class Agenda_Telefonica {
 
     }
     //Funciones
-
+     //Un metodo para crear un nuevo contacto
     static public void crearContacto() {
         if (contador >= 15) {
             System.out.println("La Memoria Esta Llena");
