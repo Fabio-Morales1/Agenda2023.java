@@ -11,6 +11,7 @@ public class Agenda_Telefonica {
         //Agenda Telefonica con arreglos unidimencionales
         Scanner entrada = new Scanner(System.in);
         int op = 0;
+        //Menu
         System.out.println("____________AGENDA TELEFONICA____________");
         System.out.println("__________Biendonido_______");
         try {
@@ -51,9 +52,9 @@ public class Agenda_Telefonica {
                         Scanner sc = new Scanner(System.in);
                         System.out.println("------------ACTULIZAR_CONTACTO----------------");
                         System.out.println("");
-                        System.out.println("_________Ingrese El Nombre__________");
-                        String Nombre = sc.nextLine();
-                        System.out.println(actulizarContacto(Nombre));
+                        System.out.println("_________Ingrese El Numero__________");
+                        String Numero = sc.nextLine();
+                        System.out.println(actulizarContacto(Numero));
                         break;
 
                     case 5:
@@ -140,9 +141,9 @@ public class Agenda_Telefonica {
         for (int i = 0; i < 15; i++) {
             if (nuevoContactos[i] != null) {
                 if (nuevoContactos[i].verNombre().equals(nombre)) {
-                    System.out.println("Ingrese Nuevo Numero Telefono");
-                    String Telefono = sc.nextLine();
-                    nuevoContactos[i].setTelefono(Telefono);
+                    System.out.println("Ingrese El Nuevo Nombre");
+                    String Nombre = sc.nextLine();
+                    nuevoContactos[i].setNombre(Nombre);
                     System.out.println("Ingrese Nuevo Domicilio");
                     String Domicilio = sc.nextLine();
                     nuevoContactos[i].setDomicilio(Domicilio);
